@@ -1,0 +1,58 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="tecnicos.list">
+      <field name="name">Lista de Técnicos</field>
+      <field name="model">tecnicos.tecnicos</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="nombre"/>
+          <field name="apellido"/>
+          <field name="celular"/>
+          <field name="email"/>
+        </tree>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="tecnicos.action_window">
+      <field name="name">Lista de Técnicos</field>
+      <field name="res_model">tecnicos.tecnicos</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="tecnicos.action_server">
+      <field name="name">tecnicos server</field>
+      <field name="model_id" ref="model_tecnicos_tecnicos"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+
+    <menuitem name="tecnicos" id="tecnicos.menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Empleados" id="tecnicos.menu_1" parent="tecnicos.menu_root"/>
+    
+    <!-- actions -->
+
+    <menuitem name="List" id="tecnicos.menu_1_list" parent="tecnicos.menu_1"
+              action="tecnicos.action_window"/>
+
+  </data>
+</odoo>
